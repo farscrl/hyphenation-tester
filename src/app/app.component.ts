@@ -20,6 +20,8 @@ export class AppComponent implements OnInit{
 
   separationSign = '—';
 
+  highlightSign = true;
+
   activeTab = "control";
 
   private hyphenator?: HyphenationFunctionSync;

@@ -27,7 +27,8 @@
 
     <div class="generatedText">
       seperaziun automatica:<br>
-      <span [innerHTML]="generatedText | highlight:separationSign"></span>
+      <span *ngIf="highlightSign" [innerHTML]="generatedText | highlight:separationSign"></span>
+      <span *ngIf="!highlightSign" [innerHTML]="generatedText"></span>
     </div>
   </div>
 </div>
@@ -38,7 +39,9 @@
 
     <div class="sign">
       Segn da seperaziun:<br>
-      <input type="text" [(ngModel)]="separationSign">
+      <input type="text" [(ngModel)]="separationSign"><br><br>
+
+      <input type="checkbox" [(ngModel)]="highlightSign">Relevar segn
     </div>
   </div>
 </div>
