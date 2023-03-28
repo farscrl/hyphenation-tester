@@ -27,9 +27,7 @@
 
     <div class="generatedText">
       seperaziun automatica:<br>
-      <ng-container>
-        {{ generatedText }}
-      </ng-container>
+      <span [innerHTML]="generatedText | highlight:separationSign"></span>
     </div>
   </div>
 </div>
