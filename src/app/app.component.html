@@ -1,28 +1,46 @@
-<div class="input">
-  <div class="sourceText">
-    original:
-    <textarea [(ngModel)]="sourceText"></textarea>
-  </div>
-
-  <div class="expectedText">
-    cun seperaziuns:
-    <textarea [(ngModel)]="expectedText"></textarea>
-  </div>
-</div>
-<div class="commands">
-  <button (click)="compare()">OK</button>
+<div class="tabs">
+  <div class="tab" [class.active]="activeTab === 'control'" (click)="switchTab('control')">Controlla</div>
+  <div class="tab" [class.active]="activeTab === 'rules'" (click)="switchTab('rules')">Reglas</div>
 </div>
 
-<div class="output">
-  <div class="diff">
-    diff:<br>
-    <span [innerHTML]="diff"></span>
+<div class="tab-content" [class.active]="activeTab === 'control'">
+  <div class="input">
+    <div class="sourceText">
+      original:
+      <textarea [(ngModel)]="sourceText"></textarea>
+    </div>
+
+    <div class="expectedText">
+      cun seperaziuns:
+      <textarea [(ngModel)]="expectedText"></textarea>
+    </div>
+  </div>
+  <div class="commands">
+    <button (click)="compare()">OK</button>
   </div>
 
-  <div class="generatedText">
-    seperaziun automatica:<br>
-    <ng-container>
-      {{ generatedText }}
-    </ng-container>
+  <div class="output">
+    <div class="diff">
+      diff:<br>
+      <span [innerHTML]="diff"></span>
+    </div>
+
+    <div class="generatedText">
+      seperaziun automatica:<br>
+      <ng-container>
+        {{ generatedText }}
+      </ng-container>
+    </div>
+  </div>
+</div>
+
+<div class="tab-content" [class.active]="activeTab === 'rules'">
+  <div class="rules">
+    <textarea [(ngModel)]="rulePatterns"></textarea>
+
+    <div class="sign">
+      Segn da seperaziun:<br>
+      <input type="text" [(ngModel)]="separationSign">
+    </div>
   </div>
 </div>

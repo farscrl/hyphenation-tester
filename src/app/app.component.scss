@@ -1,3 +1,31 @@
+.tabs {
+  padding-right: 30px;
+  padding-left: 30px;
+  display: flex;
+  border-bottom: 1px solid black;
+
+  .tab {
+    margin-right: 10px;
+    padding: 5px;
+    border: 1px solid black;
+    border-bottom: 0;
+    cursor: pointer;
+
+    &.active {
+      background-color: black;
+      color: white;
+    }
+  }
+}
+
+.tab-content {
+  display: none;
+
+  &.active {
+    display: block;
+  }
+}
+
 .input {
   display: flex;
   flex-direction: row;
@@ -27,5 +55,20 @@
   .diff, .generatedText {
     flex: 1;
     padding: 30px;
+  }
+}
+
+.rules {
+  display: flex;
+  flex-direction: row;
+  padding: 30px;
+
+  textarea {
+    width: 450px;
+    height: calc(100vh - 80px);
+  }
+
+  .sign {
+    margin-left: 60px;
   }
 }

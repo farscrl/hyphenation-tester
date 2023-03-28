@@ -16,19 +16,31 @@ export class AppComponent implements OnInit{
 
   generatedText = '';
 
-  patternRomansh: PatternsDefinition;
+  rulePatterns: string = '';
+
+  separationSign = '—';
+
+  activeTab = "control";
 
   private hyphenator?: HyphenationFunctionSync;
 
+  private readonly patternRomansh: PatternsDefinition;
+
   constructor() {
     this.patternRomansh = patternRmRumgr;
+    this.rulePatterns = this.patternRomansh.patterns.join("\n");
   }
 
   ngOnInit() {
   }
 
+  switchTab(newTab: string) {
+    this.activeTab = newTab;
+  }
+
   compare(): void {
-    this.hyphenator = createHyphenator(this.patternRomansh, { async: false, hyphenChar: '—' }) as HyphenationFunctionSync;
+    this.patternRomansh.patterns = this.rulePatterns.split("\n")
+    this.hyphenator = createHyphenator(this.patternRomansh, { async: false, hyphenChar: this.separationSign }) as HyphenationFunctionSync;
     this.generatedText = this.hyphenator!(this.sourceText);
 
     const changes = diffChars(this.expectedText, this.generatedText);
