@@ -1,0 +1,28 @@
+<div class="input">
+  <div class="sourceText">
+    original:
+    <textarea [(ngModel)]="sourceText"></textarea>
+  </div>
+
+  <div class="expectedText">
+    cun seperaziuns:
+    <textarea [(ngModel)]="expectedText"></textarea>
+  </div>
+</div>
+<div class="commands">
+  <button (click)="compare()">OK</button>
+</div>
+
+<div class="output">
+  <div class="diff">
+    diff:<br>
+    <span [innerHTML]="diff"></span>
+  </div>
+
+  <div class="generatedText">
+    seperaziun automatica:<br>
+    <ng-container>
+      {{ generatedText }}
+    </ng-container>
+  </div>
+</div>

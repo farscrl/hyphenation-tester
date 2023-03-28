@@ -1,0 +1,31 @@
+.input {
+  display: flex;
+  flex-direction: row;
+
+  .sourceText, .expectedText {
+    flex: 1;
+    padding: 30px;
+
+    textarea {
+      width: 100%;
+      height: 450px;
+    }
+  }
+}
+
+.commands {
+  display: flex;
+  justify-content: flex-end;
+  padding: 30px;
+  padding-top: 0;
+}
+
+.output {
+  display: flex;
+  flex-direction: row;
+
+  .diff, .generatedText {
+    flex: 1;
+    padding: 30px;
+  }
+}
