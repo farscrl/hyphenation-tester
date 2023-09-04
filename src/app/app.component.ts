@@ -45,7 +45,7 @@ export class AppComponent implements OnInit{
 
   compare(): void {
     this.patternRomansh.patterns = this.rulePatterns.split("\n")
-    this.hyphenator = createHyphenator(this.patternRomansh, { async: false, hyphenChar: this.separationSign }) as HyphenationFunctionSync;
+    this.hyphenator = createHyphenator(this.patternRomansh, { async: false, hyphenChar: this.separationSign, minWordLength: 4 }) as HyphenationFunctionSync;
     this.generatedText = this.hyphenator!(this.sourceText);
 
     const changes = diffChars(this.expectedText, this.generatedText);
