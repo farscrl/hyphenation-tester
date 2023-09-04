@@ -43,6 +43,10 @@ export class AppComponent implements OnInit{
     this.activeTab = newTab;
   }
 
+  countSeparationSigns(text: string): number {
+    return text.split(this.separationSign).length - 1;
+  }
+
   compare(): void {
     this.patternRomansh.patterns = this.rulePatterns.split("\n")
     this.hyphenator = createHyphenator(this.patternRomansh, { async: false, hyphenChar: this.separationSign }) as HyphenationFunctionSync;

@@ -11,7 +11,7 @@
     </div>
 
     <div class="expectedText">
-      cun seperaziuns:
+      cun seperaziuns ({{countSeparationSigns(expectedText)}} separaziuns):
       <textarea [(ngModel)]="expectedText"></textarea>
     </div>
   </div>
@@ -21,12 +21,12 @@
 
   <div class="output">
     <div class="diff">
-      diff:<br>
+      diff ({{countSeparationSigns(diff)}} separaziuns):<br>
       <span [innerHTML]="diff"></span>
     </div>
 
     <div class="generatedText">
-      seperaziun automatica:<br>
+      seperaziun automatica ({{countSeparationSigns(generatedText)}} separaziuns):<br>
       <span *ngIf="highlightSign" [innerHTML]="generatedText | highlight:separationSign"></span>
       <span *ngIf="!highlightSign" [innerHTML]="generatedText"></span>
     </div>
