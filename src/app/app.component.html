@@ -1,6 +1,6 @@
 <div class="tabs">
-  <div class="tab" [class.active]="activeTab === 'control'" (click)="switchTab('control')">Controlla</div>
-  <div class="tab" [class.active]="activeTab === 'rules'" (click)="switchTab('rules')">Reglas</div>
+  <div class="tab" [class.active]="activeTab === 'control'" (click)="switchTab('control')">controlla</div>
+  <div class="tab" [class.active]="activeTab === 'rules'" (click)="switchTab('rules')">reglas</div>
 </div>
 
 <div class="tab-content" [class.active]="activeTab === 'control'">
@@ -11,12 +11,12 @@
     </div>
 
     <div class="expectedText">
-      cun seperaziuns ({{countSeparationSigns(expectedText)}} separaziuns):
+      cun separaziuns ({{countSeparationSigns(expectedText)}} separaziuns):
       <textarea [(ngModel)]="expectedText"></textarea>
     </div>
   </div>
   <div class="commands">
-    <button (click)="compare()">Separar!</button>
+    <button (click)="compare()">separar!</button>
   </div>
 
   <div class="output">
@@ -26,7 +26,7 @@
     </div>
 
     <div class="generatedText">
-      seperaziun automatica ({{countSeparationSigns(generatedText)}} separaziuns):<br>
+      separaziun automatica ({{countSeparationSigns(generatedText)}} separaziuns):<br>
       <span *ngIf="highlightSign" [innerHTML]="generatedText | highlight:separationSign"></span>
       <span *ngIf="!highlightSign" [innerHTML]="generatedText"></span>
     </div>
@@ -38,10 +38,10 @@
     <textarea [(ngModel)]="rulePatterns"></textarea>
 
     <div class="sign">
-      Segn da seperaziun:<br>
+      segn da separaziun:<br>
       <input type="text" [(ngModel)]="separationSign"><br><br>
 
-      <input type="checkbox" [(ngModel)]="highlightSign">Relevar segn
+      <input type="checkbox" [(ngModel)]="highlightSign">relevar il segn
     </div>
   </div>
 </div>
