@@ -27,8 +27,12 @@
 
     <div class="generatedText">
       separaziun automatica ({{countSeparationSigns(generatedText)}} separaziuns):<br>
-      <span *ngIf="highlightSign" [innerHTML]="generatedText | highlight:separationSign"></span>
-      <span *ngIf="!highlightSign" [innerHTML]="generatedText"></span>
+      @if (highlightSign) {
+        <span [innerHTML]="generatedText | highlight:separationSign"></span>
+      }
+      @if (!highlightSign) {
+        <span [innerHTML]="generatedText"></span>
+      }
     </div>
   </div>
 </div>
