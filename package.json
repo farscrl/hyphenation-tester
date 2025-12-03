@@ -21,6 +21,7 @@
     "diff": "^5.1.0",
     "hyphen": "1.6.5",
     "rxjs": "~7.8.0",
+    "tailwindcss": "4.1.17",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.1"
   },
@@ -28,6 +29,7 @@
     "@angular/build": "^21.0.2",
     "@angular/cli": "~21.0.2",
     "@angular/compiler-cli": "^21.0.3",
+    "@tailwindcss/postcss": "^4.1.12",
     "@types/diff": "^5.0.3",
     "@types/hyphen": "^1.6.5",
     "@types/jasmine": "~4.3.0",
@@ -37,6 +39,8 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.1.12",
     "typescript": "~5.9.3"
   },
   "packageManager": "pnpm@10.12.4+sha512.5ea8b0deed94ed68691c9bad4c955492705c5eeb8a87ef86bc62c74a26b037b08ff9570f108b2e4dbd1dd1a9186fea925e527f141c648e85af45631074680184"
