@@ -80,3 +80,6 @@ The build artifacts will be stored in the `dist/hyphenation-tester/browser/` dir
 - **Hyphen Library**: Hyphenation engine for text processing
 - **Diff Library**: Text comparison for visual output and validation
 
+## License
+
+This project is licensed under the MIT License. See the [LICENSE.md](LICENSE.md) file for details.
