@@ -1,51 +1,153 @@
-<div class="tabs">
-  <div class="tab" [class.active]="activeTab === 'control'" (click)="switchTab('control')">controlla</div>
-  <div class="tab" [class.active]="activeTab === 'rules'" (click)="switchTab('rules')">reglas</div>
-</div>
-
-<div class="tab-content" [class.active]="activeTab === 'control'">
-  <div class="input">
-    <div class="sourceText">
-      original:
-      <textarea [(ngModel)]="sourceText"></textarea>
-    </div>
-
-    <div class="expectedText">
-      cun separaziuns ({{countSeparationSigns(expectedText)}} separaziuns):
-      <textarea [(ngModel)]="expectedText"></textarea>
-    </div>
-  </div>
-  <div class="commands">
-    <button (click)="compare()">separar!</button>
+<div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex flex-col">
+  <!-- Header Section -->
+  <div class="mb-8 p-8 ">
+    <h1 class="text-4xl font-bold text-gray-900 mb-2">Hyphenation Tester</h1>
+    <p class="text-gray-600">Fine-tune your hyphenation rules and compare results with expected outputs</p>
   </div>
 
-  <div class="output">
-    <div class="diff">
-      diff ({{countSeparationSigns(diff)}} separaziuns):<br>
-      <span [innerHTML]="diff"></span>
+  <!-- Tabs -->
+  <div class="w-full">
+    <div class="flex gap-2 border-b border-slate-200 px-8">
+      <button
+        (click)="switchTab('control')"
+        [class.bg-cyan-600]="activeTab === 'control'"
+        [class.text-white]="activeTab === 'control'"
+        [class.bg-gray-100]="activeTab !== 'control'"
+        [class.text-gray-700]="activeTab !== 'control'"
+        class="px-6 py-3 font-medium rounded-t-lg transition-all duration-200 hover:bg-cyan-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-cyan-400"
+      >
+        Tester
+      </button>
+      <button
+        (click)="switchTab('rules')"
+        [class.bg-cyan-600]="activeTab === 'rules'"
+        [class.text-white]="activeTab === 'rules'"
+        [class.bg-gray-100]="activeTab !== 'rules'"
+        [class.text-gray-700]="activeTab !== 'rules'"
+        class="px-6 py-3 font-medium rounded-t-lg transition-all duration-200 hover:bg-cyan-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-cyan-400"
+      >
+        Rules
+      </button>
     </div>
 
-    <div class="generatedText">
-      separaziun automatica ({{countSeparationSigns(generatedText)}} separaziuns):<br>
-      @if (highlightSign) {
-        <span [innerHTML]="generatedText | highlight:separationSign"></span>
-      }
-      @if (!highlightSign) {
-        <span [innerHTML]="generatedText"></span>
-      }
+    <!-- Control Tab Content -->
+    <div class="tab-content bg-white" [class.hidden]="activeTab !== 'control'">
+      <div class="space-y-6 p-6">
+        <!-- Input Section -->
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- Source Text -->
+          <div>
+            <label class="block text-sm font-semibold text-slate-900 mb-3">Original Text</label>
+            <textarea
+              [(ngModel)]="sourceText"
+              class="w-full h-64 p-4 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none font-mono text-sm text-slate-700 placeholder-slate-400"
+              placeholder="Enter text to hyphenate..."
+            ></textarea>
+          </div>
+
+          <!-- Expected Text -->
+          <div>
+            <label class="block text-sm font-semibold text-slate-900 mb-3">
+              Expected Output
+              <span class="text-blue-600 font-normal text-xs ml-2">({{countSeparationSigns(expectedText)}} separations)</span>
+            </label>
+            <textarea
+              [(ngModel)]="expectedText"
+              class="w-full h-64 p-4 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none font-mono text-sm text-slate-700 placeholder-slate-400"
+              placeholder="Expected hyphenated text..."
+            ></textarea>
+          </div>
+        </div>
+
+        <!-- Action Button -->
+        <div class="flex justify-end">
+          <button
+            (click)="compare()"
+            class="px-8 py-3 bg-cyan-600 text-white font-semibold rounded-lg shadow-md hover:bg-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 transition-all duration-200"
+          >
+            Generate Hyphenation
+          </button>
+        </div>
+
+        <!-- Output Section -->
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- Generated Text -->
+          <div>
+            <label class="block text-sm font-semibold text-slate-900 mb-3">
+              Generated Output
+              <span class="text-blue-600 font-normal text-xs ml-2">({{countSeparationSigns(generatedText)}} separations)</span>
+            </label>
+            <div class="min-h-64 p-4 border border-slate-300 rounded-lg bg-slate-50 font-mono text-sm text-slate-700 overflow-auto whitespace-pre-wrap break-words">
+              @if (highlightSign) {
+                <span [innerHTML]="generatedText | highlight:separationSign"></span>
+              }
+              @if (!highlightSign) {
+                <span [innerHTML]="generatedText"></span>
+              }
+            </div>
+          </div>
+
+          <!-- Diff -->
+          <div>
+            <label class="block text-sm font-semibold text-slate-900 mb-3">
+              Comparison
+              <span class="text-blue-600 font-normal text-xs ml-2">({{countSeparationSigns(diff)}} separations)</span>
+            </label>
+            <div class="min-h-64 p-4 border border-slate-300 rounded-lg bg-slate-50 font-mono text-sm overflow-auto">
+              <span [innerHTML]="diff"></span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-<div class="tab-content" [class.active]="activeTab === 'rules'">
-  <div class="rules">
-    <textarea [(ngModel)]="rulePatterns"></textarea>
+    <!-- Rules Tab Content -->
+    <div class="tab-content bg-white" [class.hidden]="activeTab !== 'rules'">
+      <div class="grid lg:grid-cols-3 gap-6 p-6">
+        <!-- Rules Editor -->
+        <div class="lg:col-span-2">
+          <label class="block text-sm font-semibold text-slate-900 mb-3">Hyphenation Patterns</label>
+          <textarea
+            [(ngModel)]="rulePatterns"
+            class="w-full p-4 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none font-mono text-sm text-slate-700 placeholder-slate-400"
+            style="height: calc(100vh - 220px)"
+            placeholder="Enter hyphenation patterns (one per line)..."
+          ></textarea>
+        </div>
 
-    <div class="sign">
-      segn da separaziun:<br>
-      <input type="text" [(ngModel)]="separationSign"><br><br>
+        <!-- Settings -->
+        <div class="h-fit">
+          <label class="block text-sm font-semibold text-slate-900 mb-4">Settings</label>
 
-      <input type="checkbox" [(ngModel)]="highlightSign">relevar il segn
+          <div class="space-y-4">
+            <!-- Separation Sign -->
+            <div>
+              <label class="block text-xs font-medium text-slate-700 mb-2">Separation Sign</label>
+              <input
+                type="text"
+                [(ngModel)]="separationSign"
+                maxlength="3"
+                class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm text-slate-700 placeholder-slate-400"
+                placeholder="‧"
+              />
+              <p class="text-xs text-slate-500 mt-1">Current: <span class="font-mono text-slate-700">{{ separationSign }}</span></p>
+            </div>
+
+            <!-- Highlight Checkbox -->
+            <div class="pt-4 border-t border-slate-200">
+              <label class="flex items-center cursor-pointer">
+                <input
+                  type="checkbox"
+                  [(ngModel)]="highlightSign"
+                  class="w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-2 focus:ring-blue-500"
+                />
+                <span class="ml-3 text-sm font-medium text-slate-700">Highlight separation signs</span>
+              </label>
+              <p class="text-xs text-slate-500 mt-2">Visually highlight the separation characters in the output</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

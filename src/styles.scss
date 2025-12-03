@@ -1,10 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global styles - Tailwind is imported via tailwind.css */
+
+/* Diff highlighting colors */
 .green {
-  background-color: #65ff65;
+  color: #059669;
+  background-color: #80ffbf;
+  font-weight: 500;
 }
+
 .red {
-  background-color: #ff8f8f;;
+  color: #dc2626;
+  background-color: #ff7d7d;
+  font-weight: 500;
 }
-.highlighted-text {
-  background-color: #aaa;;
+
+.grey {
+  color: #6b7280;
 }
