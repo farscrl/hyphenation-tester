@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "hyphenation-tester:build:production"
+              "buildTarget": "hyphenation-tester:build:production"
             },
             "development": {
-              "browserTarget": "hyphenation-tester:build:development"
+              "buildTarget": "hyphenation-tester:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "hyphenation-tester:build"
+            "buildTarget": "hyphenation-tester:build"
           }
         },
         "test": {
