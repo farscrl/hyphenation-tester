@@ -1,27 +1,82 @@
-# HyphenTester
+# Hyphenation Tester
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0.
+A web-based tool for testing and validating hyphenation patterns. This application helps developers and linguists fine-tune hyphenation rules and compare generated output with expected results.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Interactive Hyphenation Testing**: Test hyphenation patterns in real-time
+- **Pattern Comparison**: Compare generated hyphenation with expected output to identify differences
+- **Customizable Separation Sign**: Define custom characters for hyphenation marks
+- **Pattern Editor**: Edit and manage hyphenation patterns directly in the application
+- **Visual Highlighting**: Highlight separation signs for easy identification
 
-## Code scaffolding
+## Try it Online
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+The application is deployed and available online at: **https://farscrl.github.io/hyphenation-tester/**
 
-## Build
+No installation required - simply open the link in your browser and start testing hyphenation patterns!
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Getting Started
 
-## Running unit tests
+### Prerequisites
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Node.js (v22 or higher)
+- pnpm
 
-## Running end-to-end tests
+### Installation
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd hyphen-tester
+```
 
-## Further help
+2. Install dependencies:
+```bash
+pnpm install
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Development Server
+
+Run the development server:
+```bash
+pnpm run start
+```
+
+Navigate to `http://localhost:4200/` in your browser. The application will automatically reload when you modify any source files.
+
+## Building for Production
+
+Build the application for production:
+```bash
+pnpm run build
+```
+
+The build artifacts will be stored in the `dist/hyphenation-tester/browser/` directory.
+
+## Usage
+
+### Tester Tab
+
+1. **Original Text**: Paste the text you want to hyphenate in the first textarea
+2. **Expected Output**: Enter the text with hyphenation marks (using the configured separation sign) in the second textarea
+3. **Generate Hyphenation**: Click the button to generate hyphenation based on current rules
+4. **Compare Results**: View the differences between generated and expected output:
+   - **Green**: Added hyphenation marks
+   - **Red**: Missing hyphenation marks
+   - **Grey**: Unchanged text
+
+### Rules Tab
+
+1. **Hyphenation Patterns**: Edit the hyphenation patterns (one per line)
+   - Patterns follow the Hunspell hyphenation format
+2. **Separation Sign**: Customize the character used to mark hyphenation points (default: ‧)
+3. **Highlight Signs**: Toggle visual highlighting of separation characters in the output
+
+## Technologies Used
+
+- **Angular 21**: Modern frontend framework
+- **Tailwind CSS 4.x**: Utility-first CSS framework for responsive design
+- **Hyphen Library**: Hyphenation engine for text processing
+- **Diff Library**: Text comparison for visual output and validation
+
